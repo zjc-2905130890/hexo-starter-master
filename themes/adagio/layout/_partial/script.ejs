@@ -1,0 +1,68 @@
+<% if (theme.use_cdn && (theme.cdn_provider == 'bootcdn')) { %>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.9.0/js/all.min.js"></script>
+    <% if (theme.math) { %> 
+    <script defer src="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.13.11/katex.min.js"></script>
+    <script defer src="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.13.11/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+    <% } %>
+<% } else if (theme.use_cdn && (theme.cdn_provider == 'cdnjs')) { %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/js/all.min.js"></script>
+    <% if (theme.math) { %>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.11/katex.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.11/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+    <% } %>
+<% } else { %>
+    <%- js('/js/jquery.slim.min.js') %>
+    <%- js('/js/bootstrap.bundle.min.js') %>
+    <%- js('/js/font-awesome.all.min.js') %>
+    <% if (theme.math) { %>
+    <script defer src="<%- url_for('/js/katex.min.js') %>"></script>
+    <script defer src="<%- url_for('/js/auto-render.min.js') %>" onload="renderMathInElement(document.body);"></script>
+    <% } %>
+<% } %>
+
+<%- js('/js/av.min.js') %>
+<%- js('/js/valine.min.js') %>
+<%- js('/js/applause-easy.js') %>
+<script>
+$(document).ready(function() {
+    new ApplauseEasy({
+        id: 'applause-easy',
+        appId: "<%- theme.applause_easy_appId %>",
+        appKey: "<%- theme.applause_easy_appKey %>",
+        img_src: "<%- url_for(theme.clap_button) %>",
+        img_width: "50px",
+        img_height: "50px",
+        trigger_every: 20,
+        trigger_fun: () => {alert("Thanks!");}
+    })
+})
+</script>
+<%- js('/js/adagio.js') %>
+
+<% if (theme.baidu_analytics) { %>
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "<%- theme.baidu_url %>";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<% } %>
+
+<% if (theme.google_analytics) { %>
+<script async src="https://www.googletagmanager.com/gtag/js?id=<%- theme.google_track_id %>"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', '<%- theme.google_track_id %>');
+</script>
+<% } %>
