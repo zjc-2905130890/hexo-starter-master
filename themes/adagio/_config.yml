@@ -50,8 +50,8 @@ favicon: /img/favicon.ico
 #     'researchgate', 'twitter', 'zhihu', 'quora'
 # It's better if your choose four social networks.
 media_types:
-    - qq：2905130890
-    - vx：17609343821 
+    - QQ：2905130890
+    - QQ邮箱：2905130890@qq.com
 # You should find the usernames from the url of your personal page.
 # Note: it's not the login username!
 github_username:       xxxxx
@@ -98,7 +98,7 @@ sidebar_archive: true
 
 # Add friend links to the sidebar.
 # For each friend, specify the text what will be desplayed with 'title', and it's corresponding url as 'href'.
-sidebar_friends: true
+sidebar_friends: false
 friends: 
     -   title: 暂定
         href: /

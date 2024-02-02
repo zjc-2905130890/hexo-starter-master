@@ -170,6 +170,107 @@ hadoop03
                     
                     <div class="row">
     <div class="col">
+        <a href="/2024/02/02/%EF%BC%88%E4%BC%AA%E5%88%86%E5%B8%83%EF%BC%89Hadoop2-7-3-ubuntu18-%E8%AF%A6%E7%BB%86%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B%EF%BC%88%E4%BC%AA%E5%88%86%E5%B8%83%EF%BC%89/" class="index-card-link">
+            <div class="card-body index-card-box">
+                <h4 class="card-title text-dark article-title">（伪分布）Hadoop2.7.3+ubuntu18+详细搭建过程（伪分布）</h4>
+                <h6 class="card-subtitle mt-2 text-muted">
+                    由 皇帝; 
+                    发表在 2024-02-02</h6>
+                <p class="card-text text-dark mt-2 article-text">
+                    12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485准备工作：windows 10安装ssh工具（开启服务），将jdk以及H...
+                </p>
+            </div>
+        </a>
+    </div>
+</div>
+                    <hr class="row">
+                    
+                    <div class="row">
+    <div class="col">
+        <a href="/2024/02/02/linux-CentOS7-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E9%83%A8%E7%BD%B2Nginx%EF%BC%9C%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E5%AE%89%E8%A3%85%EF%BC%9E/" class="index-card-link">
+            <div class="card-body index-card-box">
+                <h4 class="card-title text-dark article-title">linux(CentOS7)安装配置部署Nginx＜一、基础安装＞</h4>
+                <h6 class="card-subtitle mt-2 text-muted">
+                    由 皇帝; 
+                    发表在 2024-02-02</h6>
+                <p class="card-text text-dark mt-2 article-text">
+                    关于Nginx的安装部署等步骤，官网其实也给了相关说明，这里我结合官方文档以及自己的理解给大家解释一下有关步骤，顺便为大家踩踩坑安装采用yum方式注意：我这里用的都是root权限首先第一步：安装yum工具包这东西是针对yum的，其实装不装都行
+1yum install yum-utils -y
+然后配置nginx的yum源，有了这东西，可以直接使用yum安装，
+1vi /etc/yum.re...
+                </p>
+            </div>
+        </a>
+    </div>
+</div>
+                    <hr class="row">
+                    
+                    <div class="row">
+    <div class="col">
+        <a href="/2024/02/02/Linux%E6%90%AD%E5%BB%BAhttpd%EF%BC%88%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%89centos7/" class="index-card-link">
+            <div class="card-body index-card-box">
+                <h4 class="card-title text-dark article-title">Linux搭建httpd（文件存储服务器）centos7</h4>
+                <h6 class="card-subtitle mt-2 text-muted">
+                    由 皇帝; 
+                    发表在 2024-02-02</h6>
+                <p class="card-text text-dark mt-2 article-text">
+                    注：（服务器必须把安全组相应的端口开放）先来看效果，如下图首先安装httpd：yum -y install httpd然后修改配置文件vi /etc/httpd/conf/httpd.conf修改两项内容一个是监听的端口，一个是设置字符这项是为了在网页上面显示中文正常这个设置端口，默认是80，看自己情况（我这里是因为80端口已经被我的网站占用了，但是我又想在这个服务器上面布置一个文件服务器，...
+                </p>
+            </div>
+        </a>
+    </div>
+</div>
+                    <hr class="row">
+                    
+                    <div class="row">
+    <div class="col">
+        <a href="/2024/02/02/hadoop3-3%E5%AE%8C%E5%85%A8%E5%88%86%E5%B8%83%E5%BC%8F%EF%BC%88%E6%9C%80%E7%AE%80%EF%BC%89/" class="index-card-link">
+            <div class="card-body index-card-box">
+                <h4 class="card-title text-dark article-title">hadoop3.3完全分布式（最简）</h4>
+                <h6 class="card-subtitle mt-2 text-muted">
+                    由 皇帝; 
+                    发表在 2024-02-02</h6>
+                <p class="card-text text-dark mt-2 article-text">
+                    环境准备
+3台CentOS7（本例使用VMware替代）
+jdk8
+Hadoop3.3
+
+虚拟机基础准备
+网络适配器选用NAT模式（针对VMware）
+设置静态IP，对应关系如下
+
+
+
+
+名称
+地址
+
+
+
+hadoop01
+192.168.138.201
+
+
+hadoop02
+192.168.138.202
+
+
+hadoop03
+192.168.138.203
+
+
+
+设置主机名，在各自机器上...
+                </p>
+            </div>
+        </a>
+    </div>
+</div>
+                    <hr class="row">
+                    
+                    <div class="row">
+    <div class="col">
         <a href="/2024/02/01/Linux%E4%B8%AD%E7%A8%8B%E5%BA%8F%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E3%80%81-nohup-or-screen/" class="index-card-link">
             <div class="card-body index-card-box">
                 <h4 class="card-title text-dark article-title">Linux中程序后台运行、&?nohup?or screen?</h4>
@@ -281,7 +382,7 @@ spring初体验
     <div class="col">
         <h6>标签</h6>
         <div class="tags">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSM/" rel="tag">SSM</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" rel="tag">大数据</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSM/" rel="tag">SSM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 </div>
@@ -314,7 +415,7 @@ spring初体验
             <li class="list-inline-item">
 
                 <span>
-                    <strong>qq：2905130890</strong>
+                    <strong>QQ：2905130890</strong>
                     <br/>
                 </span>
 
@@ -324,7 +425,7 @@ spring初体验
             <li class="list-inline-item">
 
                 <span>
-                    <strong>vx：17609343821</strong>
+                    <strong>QQ邮箱：2905130890@qq.com</strong>
                     <br/>
                 </span>
 
@@ -353,22 +454,6 @@ spring初体验
     <hr class="row">
 
 
-    <div class="row">
-    <div class="col">
-        <ul class="list-inline">
-            <h6>友情链接</h6>
-            
-            <li class="list-inline-item"><a href="/"><span class="text-muted">暂定</span></a>
-            </li>
-            
-            <li class="list-inline-item"><a href="/"><span class="text-muted">暂定</span></a>
-            </li>
-            
-        </ul>
-    </div>
-</div>
-    <hr class="row">
-
 
         </div>
     </div>
@@ -386,7 +471,7 @@ spring初体验
             <li class="list-inline-item">
 
                 <span>
-                    <strong>qq：2905130890</strong>
+                    <strong>QQ：2905130890</strong>
                     <br/>
                 </span>
 
@@ -396,7 +481,7 @@ spring初体验
             <li class="list-inline-item">
 
                 <span>
-                    <strong>vx：17609343821</strong>
+                    <strong>QQ邮箱：2905130890@qq.com</strong>
                     <br/>
                 </span>
 

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="科技文章、工具下载、技术分享">
     <link rel="shortcut icon" href="/img/favicon.ico">
-    <title>Linux中程序后台运行、&?nohup?or screen?-科技文章、工具下载、技术分享</title>
+    <title>linux(CentOS7)安装配置部署Nginx＜一、基础安装＞-科技文章、工具下载、技术分享</title>
 
     
 <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -115,9 +115,9 @@
     <div class="jumbotron jumbotron-fluid">
     <div class="container">
         
-        <h1 class="mt-4 article-title page-title">Linux中程序后台运行、&?nohup?or screen?</h1>
+        <h1 class="mt-4 article-title page-title">linux(CentOS7)安装配置部署Nginx＜一、基础安装＞</h1>
         
-        <p class="lead text-gray mt-3">由 皇帝; 发表在 2024-02-01</p>
+        <p class="lead text-gray mt-3">由 皇帝; 发表在 2024-02-02</p>
         
         <div class="tags">
             <ul class="tag-list">
@@ -137,39 +137,28 @@
                 <div class="row">
                     <div class="col-12">
                         <main>
-                            <article class="article-text page-content"><p>举个例子：我这里有一个xxx.jar包需要运行，如果写成这样</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar xxx.jar</span><br></pre></td></tr></table></figure>
-<p>那么此时，这个shell将会被占用，无法再做其他操作。<br>此时只要ctrl+c中断，也就意味着这个程序也中断了，这很不好。<br><strong>&amp;</strong><br>这时，我们可以这样</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar xxx.jar &amp; </span><br></pre></td></tr></table></figure>
-<p>加了&amp;之后，你会发现，程序居然已经在后台运行了，如果你的程序有输出，那么输出的内容会直接显示在shell中，不用惊慌，按下<strong>回车</strong>键，你就又可以正常输入命令了<br><strong>运行过程中的输出内容会直接显示再屏幕上，并不会保存</strong><br>但有的时候我们需要将输出信息保存，以便于后期可以查看，那么我们便可以这样</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar xxx.jar &gt;&gt; ./log.txt &amp;</span><br></pre></td></tr></table></figure>
-<p>此时，它的输出内容便会保存到当前目录下面的log.txt文件中</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;  表示覆盖写入</span><br><span class="line">&gt;&gt; 表示追加写入 </span><br></pre></td></tr></table></figure>
-<p>上面的操作，按理说已经满足了我们的需求（<strong>即程序可以后台运行，日志也可以保存</strong>）<br>但是&amp;有一个致命的缺点，当你关掉shell之后，那你通过&amp;这种方式运行的程序会<strong>立马结束</strong><br>有没有办法，当我关掉shell终端之后，程序也还是可以继续运行的方法呢？肯定有，没有我就不会说了<br><strong>nohup or screen ？</strong><br>**我推荐使用screen:**（原因：喜欢，所以就用咯）<br>在Screen环境下，所有的会话都独立的运行，并拥有各自的编号、输入、输出和窗口缓存。用户可以通过快捷键在不同的窗口下切换，并可以自由的重定向各个窗口的输入和输出。</p>
-<p>简而言之：<br>远程服务器的时候，断网或者手误关掉了远程终端，会导致会话中断，程序终止。而Screen连接的终端，会话独立运行，程序会一直进行。而且会话可以恢复，还可以自行删除。<br><strong>安装配置</strong><br>安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install screen -y</span><br></pre></td></tr></table></figure>
-<p><strong>参数说明：</strong></p>
-<pre><code>-A    将所有的视窗都调整为目前终端机的大小。
--d    &lt;作业名称&gt; 　将指定的screen作业离线。
--h    &lt;行数&gt; 　指定视窗的缓冲区行数。
--m    即使目前已在作业中的screen作业，仍强制建立新的screen作业。
--r    &lt;作业名称&gt; 　恢复离线的screen作业。
--R 　 先试图恢复离线的作业。若找不到离线的作业，即建立新的screen作业。
--s    &lt;shell&gt; 　指定建立新视窗时，所要执行的shell。
--S    &lt;作业名称&gt; 　指定screen作业的名称。
--v 　 显示版本信息。
--x 　 恢复之前离线的screen作业。
--ls或--list 　显示目前所有的screen作业。
--wipe 　检查目前所有的screen作业，并删除已经无法使用的screen作业。
-</code></pre>
-<p><strong>创建screen终端</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen -R yourname</span><br></pre></td></tr></table></figure>
-<p>（换成中文理解时新建一个yourname的新窗口 建议名字更换成其它名字）<br>执行完之后，会发现当前窗口会变成一个screen窗口，在这里就可以运行我们的程序了<br>这个窗口是独立运行的，程序会一直进行<br>比如我还是要运行上面的xxx.jar，那么我可以这样</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar xxx.jar &gt;&gt; ./log.txt &amp;</span><br></pre></td></tr></table></figure>
-<p>程序运行完你会发现和之前好像没有两样。别急，接着看<br><strong>离开screen</strong><br>按下<code>ctrl+a+d</code>，此时我们又回到了<strong>以前的shell终端</strong>里面，接着关闭shell<br>然后访问我们的程序，它居然还在运行，<strong>发生了什么？</strong><br>打开shell，输入<code>screen -ls</code>，会发现我们刚刚创建的yourname，<br><strong>进入yourname</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen  -R yourname</span><br></pre></td></tr></table></figure>
-<p>又回到了screen终端。。。<br>此时，你应该已经明白，创建的screen窗口是一个<strong>独立的</strong>，不中断的，这句话的含义。<br>如何结束它呢？<br>使用<code>screen -ls</code>，会显示所有的会话，每个会话前面都有相应的进程号。因此，直接</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">kill</span> -9 进程号</span><br></pre></td></tr></table></figure></article>
+                            <article class="article-text page-content"><p>关于Nginx的安装部署等步骤，<a target="_blank" rel="noopener" href="http://nginx.org/en/linux_packages.html#dynmodules">官网</a>其实也给了相关说明，这里我结合官方文档以及自己的理解给大家解释一下有关步骤，顺便为大家踩踩坑<br><strong>安装采用yum方式</strong><br><strong>注意：我这里用的都是root权限</strong><br>首先第一步：安装yum工具包<strong>这东西是针对yum的，其实装不装都行</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install yum-utils -y</span><br></pre></td></tr></table></figure>
+<p>然后配置nginx的yum源，有了这东西，可以直接使用yum安装，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/yum.repos.d/nginx.repo</span><br></pre></td></tr></table></figure>
+<p>写入如下内容：<br><strong>解释一下这里的文件：<br>nginx-stable这栏，是比较稳定的安装包（有可能不是最新）<br>nginx-mainline这个是主线包(就是最新的，但是实际使用中，我们通常不会使用最新的)<br>参数gpgcheck，意思是下载文件是否进⾏gpg校验，0代表不检查，1代表检查<br>咱们设置为0就行，官网是1，但是1的话安装指定某些版本的时候可能会校验失败</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[nginx-stable]</span><br><span class="line">name=nginx stable repo</span><br><span class="line">baseurl=http://nginx.org/packages/centos/<span class="variable">$releasever</span>/<span class="variable">$basearch</span>/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br><span class="line">gpgkey=https://nginx.org/keys/nginx_signing.key</span><br><span class="line">module_hotfixes=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[nginx-mainline]</span><br><span class="line">name=nginx mainline repo</span><br><span class="line">baseurl=http://nginx.org/packages/mainline/centos/<span class="variable">$releasever</span>/<span class="variable">$basearch</span>/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=0</span><br><span class="line">gpgkey=https://nginx.org/keys/nginx_signing.key</span><br><span class="line">module_hotfixes=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>yum源配置好之后，加载一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum clean</span><br><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
+<p>安装nginx(默认选择当前最新的稳定版本)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install nginx -y</span><br></pre></td></tr></table></figure>
+<p>如果想指定版本，则</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install nginx-1.12.2 -y</span><br></pre></td></tr></table></figure>
+<p>安装完成之后，<br>启动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start nginx</span><br></pre></td></tr></table></figure>
+<p>设置开机自启</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> nginx</span><br></pre></td></tr></table></figure>
+<p>如果想关闭开机自启，则</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">disable</span> nginx</span><br></pre></td></tr></table></figure>
+<p>启动之后，查看服务状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status nginx</span><br></pre></td></tr></table></figure>
+<p>如下图，即为正在运行<img src="https://img-blog.csdnimg.cn/2fa43ebfc8914cf5b1988731e90630fa.png" alt="运行成功"><br>此时安装步骤已然完成，打开浏览器，输入主机名开始访问即可<strong>默认端口是80</strong><img src="https://img-blog.csdnimg.cn/e8cd2b26558c4b4391d44cc7e7c0cf9c.png" alt="访问成功"></p>
+</article>
                         </main>
                         
 
@@ -189,19 +178,19 @@
             <ul class="pagination d-none d-md-flex pagination-lg justify-content-center">
                 <li class="page-item ">
                     <a class="page-link"
-                        href="/2024/02/02/hadoop3-3%E5%AE%8C%E5%85%A8%E5%88%86%E5%B8%83%E5%BC%8F%EF%BC%88%E6%9C%80%E7%AE%80%EF%BC%89/"
+                        href="/2024/02/02/%EF%BC%88%E4%BC%AA%E5%88%86%E5%B8%83%EF%BC%89Hadoop2-7-3-ubuntu18-%E8%AF%A6%E7%BB%86%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B%EF%BC%88%E4%BC%AA%E5%88%86%E5%B8%83%EF%BC%89/"
                         aria-label="Previous">
                         <span aria-hidden="true">&laquo;
-                            hadoop3.3完全分布式（最简）</span>
+                            （伪分布）Hadoop2.7.3+ubuntu18+详细搭建过程（伪分布）</span>
                         <span class="sr-only">Previous</span>
                     </a>
                 </li>
                 <li class="page-item ">
                     <a class="page-link"
-                        href="/2024/02/01/JavaWeb%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0%EF%BC%88SSM%EF%BC%89spring%E5%85%A5%E9%97%A8/"
+                        href="/2024/02/02/Linux%E6%90%AD%E5%BB%BAhttpd%EF%BC%88%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%89centos7/"
                         aria-label="Next">
                         <span
-                            aria-hidden="true">JavaWeb框架学习（SSM）spring入门
+                            aria-hidden="true">Linux搭建httpd（文件存储服务器）centos7
                             &raquo;</span>
                         <span class="sr-only">Next</span>
                     </a>
@@ -210,19 +199,19 @@
             <ul class="pagination d-md-none justify-content-center">
                 <li class="page-item ">
                     <a class="page-link"
-                        href="/2024/02/02/hadoop3-3%E5%AE%8C%E5%85%A8%E5%88%86%E5%B8%83%E5%BC%8F%EF%BC%88%E6%9C%80%E7%AE%80%EF%BC%89/"
+                        href="/2024/02/02/%EF%BC%88%E4%BC%AA%E5%88%86%E5%B8%83%EF%BC%89Hadoop2-7-3-ubuntu18-%E8%AF%A6%E7%BB%86%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B%EF%BC%88%E4%BC%AA%E5%88%86%E5%B8%83%EF%BC%89/"
                         aria-label="Previous">
                         <span aria-hidden="true">&laquo;
-                            hadoop3.3完全分布式（最简）</span>
+                            （伪分布）Hadoop2.7.3+ubuntu18+详细搭建过程（伪分布）</span>
                         <span class="sr-only">Previous</span>
                     </a>
                 </li>
                 <li class="page-item ">
                     <a class="page-link"
-                        href="/2024/02/01/JavaWeb%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0%EF%BC%88SSM%EF%BC%89spring%E5%85%A5%E9%97%A8/"
+                        href="/2024/02/02/Linux%E6%90%AD%E5%BB%BAhttpd%EF%BC%88%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%89centos7/"
                         aria-label="Next">
                         <span
-                            aria-hidden="true">JavaWeb框架学习（SSM）spring入门
+                            aria-hidden="true">Linux搭建httpd（文件存储服务器）centos7
                             &raquo;</span>
                         <span class="sr-only">Next</span>
                     </a>
